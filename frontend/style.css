@@ -1,0 +1,22 @@
+.tab-open {
+    color: white;
+    border-width: medium;
+}
+
+.tab-closed {
+    color: gray;
+    border-width: thin;
+}
+
+button {
+    margin: 0;
+    width: 32%;
+    height: 100%;
+    background-color: transparent;
+    padding: 2% 0;
+}
+
+#tab-content>* {
+    text-align: left;
+    color: gray;
+}

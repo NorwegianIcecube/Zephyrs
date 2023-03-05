@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Zephyrs</title>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script src="scripts.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 style="text-align: center;">user name: ___</h1>
+  <p style="text-align: center;">account balance: ___</p>
+  <div style="text-align: center; margin: 0 10%;">
+    <div id="tabs" style="text-align: center;">
+      <button id="1" class="tab-open" onclick="changeTabTo(1)">active tickets</button>
+      <button id="2" class="tab-closed" onclick="changeTabTo(2)">old tickets</button>
+      <button id="3" class="tab-closed" onclick="changeTabTo(3)">find tickets</button>
+    </div>
+    <div id="tab-content" style="margin-top: 4%;">
+      <div id="1" style="display: block;"><i>you have no active tickets</i></div>
+      <div id="2" style="display: none;"><i>you have no old tickets</i></div>
+      <div id="3" style="display: none;"><i>there are no available tickets</i></div>
+    </div>
+  </div>
+</body>
+
+</html>
