@@ -1,3 +1,8 @@
+#main {
+    text-align: center;
+    margin: 0 10%;
+}
+
 .tab-open {
     color: white;
     border-width: medium;
@@ -16,7 +21,34 @@ button {
     padding: 2% 0;
 }
 
+#tab-content {
+    margin-top: 4%;
+}
+
 #tab-content>* {
     text-align: left;
     color: gray;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-evenly;
+    border: solid;
+    position: fixed;
+    border-width: thin;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#footer>* {
+    margin: 0;
+    font-size: 50%;
 }
