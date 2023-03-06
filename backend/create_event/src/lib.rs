@@ -4,7 +4,6 @@ use solana_program::{
     entrypoint::ProgramResult,
     pubkey::Pubkey,
     program_error::ProgramError,
-    msg,
 };
 
 entrypoint!(create_event);
@@ -22,7 +21,7 @@ fn create_event(
     // Process the instruction data into correct types
     let instruction_data:Vec<&str> = instruction_data.split(|&x| x == b',').map(|s| std::str::from_utf8(s).unwrap()).collect();
 
-    // Check if the event account is owned by the program
+    // Check if the event account is owned by the programc
     if event_account.owner != program_id {
         return Err(ProgramError::IncorrectProgramId);
     }
@@ -45,6 +44,7 @@ fn create_event(
     let artists:Vec<String> = instruction_data[4].split(",").map(|s| s.to_string()).collect();
     let max_tickets:u64 = instruction_data[5].parse::<u64>().unwrap();
     let tickets_sold:u64 = instruction_data[6].parse::<u64>().unwrap();
+    let ticket_price:u64 = instruction_data[7].parse::<u64>().unwrap();
 
     // Create the event data
     let event_data = EventData::new(
@@ -56,6 +56,7 @@ fn create_event(
         artists,
         max_tickets,
         tickets_sold,
+        ticket_price,
     );
 
     // Serialize the event data
@@ -77,6 +78,7 @@ struct EventData {
     artists: Vec<String>,
     max_tickets: u64,
     tickets_sold: u64,
+    ticket_price: u64,
 }
 
 impl EventData {
@@ -89,6 +91,7 @@ impl EventData {
         artists: Vec<String>,
         max_tickets: u64,
         tickets_sold: u64,
+        ticket_price: u64,
     ) -> Self {
         Self {
             organizer,
@@ -99,21 +102,30 @@ impl EventData {
             artists,
             max_tickets,
             tickets_sold,
+            ticket_price,
         }
     }
 
     pub fn try_to_vec(&self) -> Result<Vec<u8>, ProgramError> {
         let mut data = Vec::new();
         data.extend_from_slice(&self.organizer.as_ref());
+        data.extend_from_slice("<s>".as_bytes());
         data.extend_from_slice(&self.event_name.as_bytes());
+        data.extend_from_slice("<s>".as_bytes());
         data.extend_from_slice(&self.event_date.to_le_bytes());
         data.extend_from_slice(&self.venue_name.as_bytes());
+        data.extend_from_slice("<s>".as_bytes());
         data.extend_from_slice(&self.venue_address.as_bytes());
+        data.extend_from_slice("<s>".as_bytes());
         for artist in &self.artists {
             data.extend_from_slice(&artist.as_bytes());
+            data.extend_from_slice("<sa>".as_bytes());
         }
         data.extend_from_slice(&self.max_tickets.to_le_bytes());
+        data.extend_from_slice("<s>".as_bytes());
         data.extend_from_slice(&self.tickets_sold.to_le_bytes());
+        data.extend_from_slice("<s>".as_bytes());
+        data.extend_from_slice(&self.ticket_price.to_le_bytes());
         Ok(data)
     }
 }
