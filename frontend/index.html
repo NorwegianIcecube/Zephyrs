@@ -5,18 +5,25 @@
   <meta charset="utf-8" />
   <title>Zephyrs</title>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <script src="scripts.js"></script>
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1 style="text-align: center;">user name: ___</h1>
-  <p style="text-align: center;">account balance: ___</p>
+  <div id="status-bar">
+    <div id="not-signed-in">
+      <h4 style="color: red">you are not signed in</h4>
+      <label for="secret-key">enter secret key:</label>
+      <input id="secret-key" type="password" />
+    </div>
+    <div id="signed-in" style="display: none;">
+      <h1 style="text-align: center;">user name: ___</h1>
+      <p style="text-align: center;">account balance: ___</p>
+    </div>
+  </div>
   <div id="main">
     <div id="tabs" style="text-align: center;">
-      <button id="1" class="tab-open" onclick="changeTabTo(1)">active tickets</button>
-      <button id="2" class="tab-closed" onclick="changeTabTo(2)">old tickets</button>
-      <button id="3" class="tab-closed" onclick="changeTabTo(3)">find tickets</button>
+      <button id="1" class="tab-open">active tickets</button>
+      <button id="2" class="tab-closed">old tickets</button>
+      <button id="3" class="tab-closed">find tickets</button>
     </div>
     <div id="tab-content">
       <div id="1" style="display: block;"><i>you have no active tickets</i></div>
@@ -27,8 +34,10 @@
   <div id="footer">
     <p>LOGO</p>
     <i>Zephyrs - a ticket to the rest of your life</i>
-    <p>contact: 1234</p>
+    <p>contact: 12346996</p>
   </div>
+  <script type="module" src="./script.js"></script>
+  <link rel="stylesheet" href="./style.css">
 </body>
 
 </html>
