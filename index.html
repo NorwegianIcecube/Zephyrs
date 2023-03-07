@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <title>Zephyrs</title>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
 </head>
 
 <body>
@@ -15,8 +16,8 @@
       <input id="secret-key" type="password" />
     </div>
     <div id="signed-in" style="display: none;">
-      <h1 style="text-align: center;">user name: ___</h1>
-      <p style="text-align: center;">account balance: ___</p>
+      <h1 style="text-align: center;">welcome!</h1>
+      <p id="balance" style="text-align: center;">account balance: ___</p>
     </div>
   </div>
   <div id="main">
@@ -36,8 +37,8 @@
     <i>Zephyrs - a ticket to the rest of your life</i>
     <p>contact: 12346996</p>
   </div>
-  <script type="module" src="./script.js"></script>
   <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./script.js"></script>
 </body>
 
 </html>
